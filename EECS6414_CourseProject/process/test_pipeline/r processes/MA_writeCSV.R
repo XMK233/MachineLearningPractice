@@ -1,0 +1,2 @@
+write.csv(patial_effect,file="C:\\Users\\mathew\\Desktop\\132.csv",quote=F,row.names = T)
+write.csv(c("AUC"=AUC,"AUC_optimism"=AUC_optimism),file="C:\\Users\\mathew\\Desktop\\132.csv",quote=F,row.names = T)
