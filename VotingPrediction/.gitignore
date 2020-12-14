@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.json
+*.iml
+*.pyc
+*.txt
+/process/Pipeline/*_split/*.txt
+/process/Pipeline/*_split/*.csv
+out
+gen
+crawler/crawler/Data/files
+/process/Pipeline/crawler/crawler/Data/
+process/Pipeline/Data_cleaning/**/*.csv
