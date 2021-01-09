@@ -1,5 +1,9 @@
 */originalDataset
 */preprocessedData
 */submissionResults
+*/src/main/resources
+/SparrowRecSys/**/target
+/SparrowRecSys/**/resources
+!/SparrowRecSys/NewCode/JavaPart/src/main/resources
 /wasted/*
 /_ref
