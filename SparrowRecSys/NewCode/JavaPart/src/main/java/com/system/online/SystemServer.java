@@ -53,9 +53,9 @@ public class SystemServer {
         //load all the data to DataManager
         DataManager.getInstance().loadData(webRootUri.getPath() + "sampledata/movies.csv",
                 webRootUri.getPath() + "sampledata/links.csv",webRootUri.getPath() + "sampledata/ratings.csv",
-                webRootUri.getPath() + "modeldata/DeepWalkEmb.csv", //"modeldata/item2vecEmb.csv",
+                webRootUri.getPath() + "modeldata/item2vecEmb.csv", // "modeldata/img2vecEmb.csv", //"modeldata/DeepWalkEmb.csv", //"modeldata/item2vecEmb.csv",
                 webRootUri.getPath() + "modeldata/userEmb.csv",
-                "deepwalk_i2vEmb", //"i2vEmb",
+                "img2vecEmb", //"i2vEmb",
                 "uEmb");
 
         //create server context
