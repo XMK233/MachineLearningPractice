@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4de448e6-64f1-4b06-96e2-15e98805fd1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../OriginalCode/src/main/scala/heheda.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/PythonPart.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/SystemServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/SystemServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/GraphEmbedding/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/GraphEmbedding/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +52,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Embedding" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -95,5 +106,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

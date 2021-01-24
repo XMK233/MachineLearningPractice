@@ -53,7 +53,7 @@ public class SystemServer {
         //load all the data to DataManager
         DataManager.getInstance().loadData(webRootUri.getPath() + "sampledata/movies.csv",
                 webRootUri.getPath() + "sampledata/links.csv",webRootUri.getPath() + "sampledata/ratings.csv",
-                webRootUri.getPath() + "modeldata/item2vecEmb.csv", // "modeldata/img2vecEmb.csv", //"modeldata/DeepWalkEmb.csv", //"modeldata/item2vecEmb.csv",
+                webRootUri.getPath() + "modeldata/PosterFeatureVector.csv", //"modeldata/PosterFeatureVector.csv", // "modeldata/img2vecEmb.csv", //"modeldata/DeepWalkEmb.csv", //"modeldata/item2vecEmb.csv", //"modeldata/item2vecEmb_xmk.csv",
                 webRootUri.getPath() + "modeldata/userEmb.csv",
                 "img2vecEmb", //"i2vEmb",
                 "uEmb");
