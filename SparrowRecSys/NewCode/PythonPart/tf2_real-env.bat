@@ -1,0 +1,2 @@
+call activate tf2_real
+jupyter notebook
