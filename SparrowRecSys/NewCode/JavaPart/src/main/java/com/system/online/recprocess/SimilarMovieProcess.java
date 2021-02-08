@@ -22,7 +22,10 @@ public class SimilarMovieProcess {
         if (null == movie){
             return new ArrayList<>();
         }
+
+//        List<Movie> candidates = multipleRetrievalCandidates(movie);//candidateGenerator(movie);
         List<Movie> candidates = candidateGenerator(movie);
+
         List<Movie> rankedList = ranker(movie, candidates, model);
 
         if (rankedList.size() > size){

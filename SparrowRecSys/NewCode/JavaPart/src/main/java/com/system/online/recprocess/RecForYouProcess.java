@@ -13,6 +13,22 @@ import java.util.*;
 
 import static com.system.online.util.HttpClient.asyncSinglePostRequest;
 
+//import org.apache.log4j.*;
+//import org.apache.spark.SparkConf;
+//import org.apache.spark.sql.expressions.*; //{UserDefinedFunction, Window}
+//import org.apache.spark.sql.functions.*; //{format_number, _}
+//import org.apache.spark.sql.types.*; //{DecimalType, FloatType, IntegerType, LongType, StringType, StructField, StructType}
+//import org.apache.spark.sql.*;
+//import org.apache.spark.sql.Row;
+//import redis.clients.jedis.Jedis;
+//import redis.clients.jedis.params.SetParams;
+//
+//import scala.collection.immutable.ListMap;
+//import scala.collection.*;
+//import scala.collection.mutable.ArrayBuffer;
+//
+//import com.system.online.datamanager.RedisClient;
+
 /**
  * Recommendation process of similar movies
  */
@@ -27,11 +43,13 @@ public class RecForYouProcess {
      * @return  list of similar movies
      */
     public static List<Movie> getRecList(int userId, int size, String model){
-        User user = DataManager.getInstance().getUserById(userId);
+        User user = DataManager.getInstance().getUserById(userId);//get the user object.
         if (null == user){
             return new ArrayList<>();
         }
         final int CANDIDATE_SIZE = 800;
+
+        //get a list of movies and those movies are sorted by their ratings.
         List<Movie> candidates = DataManager.getInstance().getMovies(CANDIDATE_SIZE, "rating");
 
         //load user emb from redis if data source is redis
@@ -43,6 +61,7 @@ public class RecForYouProcess {
             }
         }
 
+        // whether loading the feature from redis.
         if (Config.IS_LOAD_USER_FEATURE_FROM_REDIS){
             String userFeaturesKey = "uf:" + userId;
             Map<String, String> userFeatures = RedisClient.getInstance().hgetAll(userFeaturesKey);
@@ -76,7 +95,7 @@ public class RecForYouProcess {
                     candidateScoreMap.put(candidate, similarity);
                 }
                 break;
-            case "nerualcf":
+            case "neuralcf":
                 callNeuralCFTFServing(user, candidates, candidateScoreMap);
                 break;
             default:
@@ -114,9 +133,61 @@ public class RecForYouProcess {
         if (null == user || null == candidates || candidates.size() == 0){
             return;
         }
-
+        // save the json array for all samples.
         JSONArray instances = new JSONArray();
         for (Movie m : candidates){
+            JSONObject instance = new JSONObject();
+            instance.put("userId", user.getUserId());
+            instance.put("movieId", m.getMovieId());
+            instances.put(instance);
+        }
+
+        JSONObject instancesRoot = new JSONObject();
+        instancesRoot.put("instances", instances);
+
+        //need to confirm the tf serving end point
+        String predictionScores = asyncSinglePostRequest("http://localhost:8501/v1/models/recmodel:predict", instancesRoot.toString());
+        System.out.println("send user" + user.getUserId() + " request to tf serving.");
+
+        JSONObject predictionsObject = new JSONObject(predictionScores);
+        JSONArray scores = predictionsObject.getJSONArray("predictions");
+        for (int i = 0 ; i < candidates.size(); i++){
+            candidateScoreMap.put(candidates.get(i), scores.getJSONArray(i).getDouble(0));
+        }
+    }
+////////////////////////////////////////////////////////////////
+
+    public static void callDeepFMTFServing_easy(String userId, String movieId){
+        JSONArray instances = new JSONArray();
+        ////////////////////
+        JSONObject instance = new JSONObject();
+        instance.put("userId", userId);
+        instance.put("movieId", movieId);
+        ///还有很多特征.
+        instances.put(instance);
+
+        JSONObject instancesRoot = new JSONObject();
+        instancesRoot.put("instances", instances);
+
+        //need to confirm the tf serving end point
+        String predictionScores = asyncSinglePostRequest("http://localhost:8501/v1/models/recmodel:predict", instancesRoot.toString());
+        System.out.println("send user" + userId + " request to tf serving.");
+
+        JSONObject predictionsObject = new JSONObject(predictionScores);
+        JSONArray scores = predictionsObject.getJSONArray("predictions");
+    }
+
+    public static void callDeepFMTFServing(User user, List<Movie> candidates, HashMap<Movie, Double> candidateScoreMap){
+        if (null == user || null == candidates || candidates.size() == 0){
+            return;
+        }
+        String userId = String.valueOf(user.getUserId());
+        JSONArray instances = new JSONArray();
+        for (Movie m : candidates){
+            String movieId = String.valueOf(m.getMovieId());
+
+
+            ////////////////////
             JSONObject instance = new JSONObject();
             instance.put("userId", user.getUserId());
             instance.put("movieId", m.getMovieId());

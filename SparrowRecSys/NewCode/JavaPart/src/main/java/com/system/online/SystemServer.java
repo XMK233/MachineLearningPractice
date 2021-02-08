@@ -1,11 +1,15 @@
 package com.system.online;
 
+import java.lang.reflect.Array;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URL;
 
 import com.system.online.datamanager.DataManager;
+import com.system.online.recprocess.RecForYouProcess;
 import com.system.online.service.*;
+import org.apache.flink.api.java.DataSet;
+import org.apache.spark.sql.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -14,11 +18,77 @@ import org.eclipse.jetty.util.resource.Resource;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
+
+import com.system.online.scalaFeatureEngineering.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.List;
+
+import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.sql.RowFactory;
+import org.apache.spark.api.java.JavaRDD;
+
+import static com.system.online.util.HttpClient.asyncSinglePostRequest;
+///////////////////////////////////////////
+import com.system.online.datamanager.RedisClient;
+import redis.clients.jedis.Jedis;
+import java.io.Serializable;
+
+
+class RatingTmp implements Serializable {
+    private String userId;
+    private String movieId;
+    private String rating;
+    private String timestamp;
+    public RatingTmp(String userId, String movieId, String rating, String timestamp){
+        this.userId = userId;
+        this.movieId = movieId;
+        this.rating = rating;
+        this.timestamp = timestamp;
+    }
+}
+
+class MovieTmp implements Serializable {
+    private String movieId;
+    private String title;
+    private String genres;
+    public MovieTmp(String movieId, String title, String genres){
+        this.movieId = movieId;
+        this.title = title;
+        this.genres = genres;
+    }
+}
 
 public class SystemServer {
+    // https://timepasstechies.com/create-spark-dataframe-java-list/ 不会出错, 但是没用.
 
+    public static void callDeepFMTFServing_easy(String userId, String movieId, SparkSession spark, SQLContext sqc){
+        Jedis redisClient = RedisClient.getInstance();
+        int haveRecord = 0;
+        for (String key : redisClient.keys("rating-user_" + userId + "-*")){
+            String mid = key.split("-")[2].split("_")[1];
+            // System.out.println(mid);
+            if (mid.equals(movieId)){
+                haveRecord = 1;
+            }
+            String rating =  redisClient.hget(key, "rating");
+            String timestamp =  redisClient.hget(key, "timestamp");
+        }
+    }
     public static void main(String[] args) throws Exception {
         new SystemServer().run();
+        //////////////////////////////////////////
+//        SparkSession spark = SparkSession.builder().master("local").appName("featureEngineering").getOrCreate();
+//        SparkConf conf = new SparkConf().setAppName("SparkSample").setMaster("local[*]");
+//        JavaSparkContext jsc = new JavaSparkContext(conf);
+//        SQLContext sqc = new SQLContext(jsc);
+//        SystemServer.callDeepFMTFServing_easy("1", "567", spark, sqc);
     }
 
     //recsys server port number
@@ -51,12 +121,15 @@ public class SystemServer {
         System.out.printf("Web Root URI: %s%n", webRootUri.getPath());
 
         //load all the data to DataManager
-        DataManager.getInstance().loadData(webRootUri.getPath() + "sampledata/movies.csv",
-                webRootUri.getPath() + "sampledata/links.csv",webRootUri.getPath() + "sampledata/ratings.csv",
+        DataManager.getInstance().loadData(
+                webRootUri.getPath() + "sampledata/movies.csv",
+                webRootUri.getPath() + "sampledata/links.csv",
+                webRootUri.getPath() + "sampledata/ratings.csv",
                 webRootUri.getPath() + "modeldata/PosterFeatureVector.csv", //"modeldata/PosterFeatureVector.csv", // "modeldata/img2vecEmb.csv", //"modeldata/DeepWalkEmb.csv", //"modeldata/item2vecEmb.csv", //"modeldata/item2vecEmb_xmk.csv",
-                webRootUri.getPath() + "modeldata/userEmb.csv",
+                webRootUri.getPath() + "modeldata/userEmb_xmk.csv",
                 "img2vecEmb", //"i2vEmb",
-                "uEmb");
+                "uEmb"
+        );
 
         //create server context
         ServletContextHandler context = new ServletContextHandler();

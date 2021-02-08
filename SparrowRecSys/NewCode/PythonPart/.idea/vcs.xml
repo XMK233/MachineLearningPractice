@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../../.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Embedding/OtherMethods/GraphEmbedding" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/FeatureEngineering/OtherMethods/GraphEmbedding" vcs="Git" />
   </component>
 </project>
