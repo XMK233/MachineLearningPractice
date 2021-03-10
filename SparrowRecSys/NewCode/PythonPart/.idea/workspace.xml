@@ -20,38 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4de448e6-64f1-4b06-96e2-15e98805fd1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Data2Redis/1-csv2redis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/SystemServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/SystemServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/recprocess/RecForYouProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/recprocess/RecForYouProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/recprocess/SimilarMovieProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/recprocess/SimilarMovieProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/util/HttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../JavaPart/src/main/java/com/system/online/util/HttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PythonPart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PythonPart.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Embedding/OtherMethods/GraphEmbedding/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Embedding/OtherMethods/GraphEmbedding/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OriProcessing/Embedding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/.ipynb_checkpoints/FE-DeepWalk_Item2Vec-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/.ipynb_checkpoints/FE-ImageEmbedding-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/.ipynb_checkpoints/FE-ImageEmbedding_MultiLabel-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/.ipynb_checkpoints/FE-Item2Vec-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/FE-DeepWalk_Item2Vec.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/FE-ImageEmbedding.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/FE-ImageEmbedding_MultiLabel.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/FE-Item2Vec.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/GraphEmbedding.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/preprocessedData/DeepWalkEmb.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/preprocessedData/edgeList.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/preprocessedData/img2vecEmb.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/preprocessedData/item2vecEmb_xmk.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/preprocessedData/uid_movieids.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/wasted/FE-DeepWalk_Item2Vec.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/wasted/FE-ImageEmbedding.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/wasted/FE-ImageEmbedding_MultiLabel-1.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FeatureEngineering/OtherMethods/wasted/FE-ImageEmbedding_MultiLabel.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelTraining/.ipynb_checkpoints/DeepFM-Test-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ModelTraining/.ipynb_checkpoints/DeepFM-Test-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ModelTraining/DeepFM-Test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ModelTraining/DeepFM-Test.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../OriginalCode/src/main/java/com/sparrowrecsys/offline/spark/featureeng/FeatureEngForRecModel.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../OriginalCode/src/main/java/com/sparrowrecsys/offline/spark/featureeng/FeatureEngForRecModel.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
